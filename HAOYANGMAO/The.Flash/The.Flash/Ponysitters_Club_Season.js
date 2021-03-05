@@ -212,7 +212,10 @@ return st
 }
 
 
-
+function shareCodesFormat() {
+return new Promise(async resolve => {
+  // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
+  $.newShareCodes = [];
 
 
 

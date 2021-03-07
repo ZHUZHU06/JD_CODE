@@ -60,6 +60,8 @@ let MHShareCodes=[""];//京东盲盒
 let ZDShareCodes=[""];//种豆
 let ASShareCodes=[""];//签到领现金
 
+
+
 //格式["AA","BB","CC"]
 
 //当前互助码活动(动态更新中):['NC@京东农场', 'AS@签到领现金', 'MC@萌宠', 'JC@惊喜工厂', 'DC@京东工厂', 'ZD@种豆', 'MH@盲盒']
@@ -90,7 +92,7 @@ async function changeFiele(content, cookie) {
       else
      newContent =newContent.replace(`https://raw.githubusercontent.com/jd1994527314/iosrule/cs/JD_TG`, `${HELPURL}` );
      
-//newContent=AddFirstCode(newContent);
+     newContent=AddFirstCode(newContent);
      
       await fs.writeFileSync( './temp.js', newContent, 'utf8')
     
@@ -208,7 +210,7 @@ st=st.replace(fn1,"*****");
   }
 
 if (st[i]==("账"))
-{fn1=st.substr(i+2,15);
+{fn1=st.substr(i+2,7);
 st=st.replace(fn1,"************");}
 
 if (st[i]==("京"))
@@ -249,12 +251,12 @@ else if  (process.env.SYNCURL.indexOf('XJJC.js')>=0)
 ShareCode=JCShareCodes;
 
 
-if (!ShareCode[0])
-  return newContent
 
 
+console.log("开始获取内置朱丽娜");
+console.log(ShareCode)
 newContent =newContent.replace(`$.newShareCodes = []`,`$.newShareCodes=`+JSON.stringify(ShareCode));
-console.log(newContent)
+
 return newContent
 }
 

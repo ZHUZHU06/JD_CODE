@@ -3,6 +3,7 @@
 // detail url: https://github.com/ruicky/jd_sign_bot
 /*
 2020.3.5增加内置互助码填写
+2020.3.7修复github 日志log显示不了多账号
 
 　BBC2历史电视电影系列《空王冠》（The Hollow Crown）4部经典莎士比亚作品的新演绎，分别是：《理查二世》（Richard II）、《亨利四世：第一部》（Henry IV, Part 1）、《亨利四世：第二部》（Henry IV, Part 2）和《亨利五 世》（Henry V）。在2012年伦敦奥运会期间，为了向全世界展现英国文化，这四部电视电影将作为伦敦文化奥运的重点推荐剧目向全世界推行，在2012年6月播出。　　《亨利四世》是该系列的第二部。夺取理查二世权势的亨利四世，将由奥斯卡影帝杰瑞米·艾恩斯 Jeremy Irons饰演，将由《丑闻纪事》的导演理查德·艾尔掌镜，在《复仇者联盟》中雷神弟弟“洛基”汤姆·希德勒斯顿 Tom Hiddleston将饰演Prince Hal，西蒙·拉塞尔·比尔 Simon Russell Beale饰演约翰·福斯塔夫爵士，艾伦·阿姆斯特朗 Alun Armstrong饰演诺森伯兰伯爵。　　《亨利四世》展现了英国中世纪时期迷人的历史，并将演绎出近年来最野心勃勃的一部莎士比亚改编作品。《亨利四世》是莎士比亚历史剧中最成功、最受欢迎的一部，被看成莎士比亚历史剧的代表作。这部作品的主要内容是反映亨利四世和他的王子们与反叛的诸侯贵族进行殊死斗争的过程。莎士比亚突破传统历史剧多条线索交织发展的网状结构，采用了两条线索平行发展的结构——以亨利四世为代表的宫廷生活线索和以福斯塔夫为代表的市井生活线索。
 
@@ -61,7 +62,6 @@ let ZDShareCodes=[""];//种豆
 let ASShareCodes=[""];//签到领现金
 
 
-
 //格式["AA","BB","CC"]
 
 //当前互助码活动(动态更新中):['NC@京东农场', 'AS@签到领现金', 'MC@萌宠', 'JC@惊喜工厂', 'DC@京东工厂', 'ZD@种豆', 'MH@盲盒']
@@ -108,9 +108,9 @@ async function executeOneByOne() {
         $.nickName = '';
         message = ''
        console.log(`\n******开始【冬瓜号${$.index}】${$.nickName.slice(-4) || $.UserName.slice(-4)}*********\n`);
-       await exec("node temp.js >> result.txt");
+       await exec("node temp.js >> result"+(i+1)+".txt");
      
-       const path = "./result.txt";
+       const path = "./result"+(i+1)+".txt";
        let rcontent = "";
        if (fs.existsSync(path)) {
           rcontent = fs.readFileSync(path, "utf8");
